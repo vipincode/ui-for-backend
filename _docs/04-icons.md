@@ -9,6 +9,7 @@ npm install react-icons lucide-react
 ### The Problem
 
 Importing icons ad-hoc across every component creates:
+
 - Inconsistent icon sizes and styles.
 - Repetitive imports scattered everywhere.
 - Difficult to swap icon libraries later.
@@ -30,62 +31,62 @@ Importing icons ad-hoc across every component creates:
 // ─── Lucide Icons ──────────────────────────────────────────────────────────
 export {
   // Navigation
-  Menu          as IconMenu,
-  X             as IconClose,
-  ChevronDown   as IconChevronDown,
-  ChevronRight  as IconChevronRight,
-  ArrowLeft     as IconArrowLeft,
-  ArrowRight    as IconArrowRight,
+  Menu as IconMenu,
+  X as IconClose,
+  ChevronDown as IconChevronDown,
+  ChevronRight as IconChevronRight,
+  ArrowLeft as IconArrowLeft,
+  ArrowRight as IconArrowRight,
 
   // Actions
-  Search        as IconSearch,
-  Plus          as IconPlus,
-  Pencil        as IconEdit,
-  Trash2        as IconDelete,
-  Copy          as IconCopy,
-  Download      as IconDownload,
-  Upload        as IconUpload,
-  RefreshCw     as IconRefresh,
+  Search as IconSearch,
+  Plus as IconPlus,
+  Pencil as IconEdit,
+  Trash2 as IconDelete,
+  Copy as IconCopy,
+  Download as IconDownload,
+  Upload as IconUpload,
+  RefreshCw as IconRefresh,
 
   // Status
-  Check         as IconCheck,
-  AlertCircle   as IconAlert,
+  Check as IconCheck,
+  AlertCircle as IconAlert,
   AlertTriangle as IconWarning,
-  Info          as IconInfo,
-  Loader2       as IconSpinner,
+  Info as IconInfo,
+  Loader2 as IconSpinner,
 
   // Theme
-  Sun           as IconSun,
-  Moon          as IconMoon,
-  Monitor       as IconSystem,
+  Sun as IconSun,
+  Moon as IconMoon,
+  Monitor as IconSystem,
 
   // User
-  User          as IconUser,
-  LogOut        as IconLogout,
-  Settings      as IconSettings,
-} from "lucide-react";
+  User as IconUser,
+  LogOut as IconLogout,
+  Settings as IconSettings,
+} from "lucide-react"
 
 // ─── react-icons (Brand / Social) ─────────────────────────────────────────
-export { FaGithub   as IconGithub }   from "react-icons/fa";
-export { FaGoogle   as IconGoogle }   from "react-icons/fa";
-export { FaTwitter  as IconTwitter }  from "react-icons/fa";
-export { SiVercel   as IconVercel }   from "react-icons/si";
-export { SiSupabase as IconSupabase } from "react-icons/si";
+export { FaGithub as IconGithub } from "react-icons/fa"
+export { FaGoogle as IconGoogle } from "react-icons/fa"
+export { FaTwitter as IconTwitter } from "react-icons/fa"
+export { SiVercel as IconVercel } from "react-icons/si"
+export { SiSupabase as IconSupabase } from "react-icons/si"
 ```
 
 ### Usage
 
 ```tsx
 // In any component — the import source is always the same
-import { IconSearch, IconGithub, IconSpinner } from "@/components/icons";
+import { IconSearch, IconGithub, IconSpinner } from "@/components/icons"
 
 export function SearchBar() {
   return (
     <div className="relative">
-      <IconSearch className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
+      <IconSearch className="absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" />
       <input className="pl-9 ..." />
     </div>
-  );
+  )
 }
 ```
 
@@ -93,13 +94,13 @@ export function SearchBar() {
 
 ```tsx
 // src/components/icons/icon.tsx
-import type { LucideIcon } from "lucide-react";
-import { cn } from "@/lib/utils";
+import type { LucideIcon } from "lucide-react"
+import { cn } from "@/lib/utils"
 
 interface IconProps {
-  icon: LucideIcon | React.ComponentType<{ className?: string }>;
-  size?: "xs" | "sm" | "md" | "lg";
-  className?: string;
+  icon: LucideIcon | React.ComponentType<{ className?: string }>
+  size?: "xs" | "sm" | "md" | "lg"
+  className?: string
 }
 
 const sizeMap = {
@@ -107,9 +108,9 @@ const sizeMap = {
   sm: "size-4",
   md: "size-5",
   lg: "size-6",
-} as const;
+} as const
 
 export function Icon({ icon: IconComponent, size = "md", className }: IconProps) {
-  return <IconComponent className={cn(sizeMap[size], className)} />;
+  return <IconComponent className={cn(sizeMap[size], className)} />
 }
 ```

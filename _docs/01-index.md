@@ -1,12 +1,5 @@
 # Next.js + Tailwind CSS v4 + Shadcn
 
-### Key packages
-
-```bash
-npm install next-themes react-hook-form @hookform/resolvers zod react-icons lucide-react
-npm install -D tw-animate-css
-```
-
 ### File structure
 
 ```
@@ -61,7 +54,7 @@ To add brand colors or custom spacing, extend `@theme`:
 /* Extend @theme with your own tokens */
 @theme inline {
   /* These become bg-brand-500, text-brand-500, etc. automatically */
-  --color-brand-50:  oklch(0.97 0.03 260);
+  --color-brand-50: oklch(0.97 0.03 260);
   --color-brand-500: oklch(0.55 0.22 260);
   --color-brand-900: oklch(0.2 0.1 260);
 
@@ -71,80 +64,79 @@ To add brand colors or custom spacing, extend `@theme`:
 }
 
 @theme inline {
-
   /* --- Colors (Shadcn semantic tokens) --- */
-  --color-background:              var(--background);
-  --color-foreground:              var(--foreground);
-  --color-card:                    var(--card);
-  --color-card-foreground:         var(--card-foreground);
-  --color-popover:                 var(--popover);
-  --color-popover-foreground:      var(--popover-foreground);
-  --color-primary:                 var(--primary);
-  --color-primary-foreground:      var(--primary-foreground);
-  --color-secondary:               var(--secondary);
-  --color-secondary-foreground:    var(--secondary-foreground);
-  --color-muted:                   var(--muted);
-  --color-muted-foreground:        var(--muted-foreground);
-  --color-accent:                  var(--accent);
-  --color-accent-foreground:       var(--accent-foreground);
-  --color-destructive:             var(--destructive);
-  --color-destructive-foreground:  var(--destructive-foreground);
-  --color-border:                  var(--border);
-  --color-input:                   var(--input);
-  --color-ring:                    var(--ring);
-  --color-chart-1:                 var(--chart-1);
-  --color-chart-2:                 var(--chart-2);
-  --color-chart-3:                 var(--chart-3);
-  --color-chart-4:                 var(--chart-4);
-  --color-chart-5:                 var(--chart-5);
-  --color-sidebar:                 var(--sidebar);
-  --color-sidebar-foreground:      var(--sidebar-foreground);
-  --color-sidebar-primary:         var(--sidebar-primary);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
   --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent:          var(--sidebar-accent);
+  --color-sidebar-accent: var(--sidebar-accent);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border:          var(--sidebar-border);
-  --color-sidebar-ring:            var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
 
   /* --- Typography --- */
-  --font-sans:  var(--font-sans);
-  --font-mono:  var(--font-mono);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
 
   /* --- Border Radius --- */
   --radius-none: 0px;
-  --radius-xs:   calc(var(--radius) - 6px);
-  --radius-sm:   calc(var(--radius) - 4px);
-  --radius-md:   calc(var(--radius) - 2px);
-  --radius-lg:   var(--radius);
-  --radius-xl:   calc(var(--radius) + 4px);
-  --radius-2xl:  calc(var(--radius) + 8px);
-  --radius-3xl:  calc(var(--radius) + 16px);
+  --radius-xs: calc(var(--radius) - 6px);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 16px);
   --radius-full: 9999px;
 
   /* --- Shadows --- */
-  --shadow-xs:      0 1px 2px 0 var(--shadow-color);
-  --shadow-sm:      0 1px 3px 0 var(--shadow-color), 0 1px 2px -1px var(--shadow-color);
-  --shadow-md:      0 4px 6px -1px var(--shadow-color), 0 2px 4px -2px var(--shadow-color);
-  --shadow-lg:      0 10px 15px -3px var(--shadow-color), 0 4px 6px -4px var(--shadow-color);
-  --shadow-xl:      0 20px 25px -5px var(--shadow-color), 0 8px 10px -6px var(--shadow-color);
-  --shadow-2xl:     0 25px 50px -12px var(--shadow-color);
-  --shadow-card:    0 2px 8px -2px var(--shadow-color), 0 1px 3px -1px var(--shadow-color);
-  --shadow-dialog:  0 20px 60px -15px oklch(0 0 0 / 35%);
+  --shadow-xs: 0 1px 2px 0 var(--shadow-color);
+  --shadow-sm: 0 1px 3px 0 var(--shadow-color), 0 1px 2px -1px var(--shadow-color);
+  --shadow-md: 0 4px 6px -1px var(--shadow-color), 0 2px 4px -2px var(--shadow-color);
+  --shadow-lg: 0 10px 15px -3px var(--shadow-color), 0 4px 6px -4px var(--shadow-color);
+  --shadow-xl: 0 20px 25px -5px var(--shadow-color), 0 8px 10px -6px var(--shadow-color);
+  --shadow-2xl: 0 25px 50px -12px var(--shadow-color);
+  --shadow-card: 0 2px 8px -2px var(--shadow-color), 0 1px 3px -1px var(--shadow-color);
+  --shadow-dialog: 0 20px 60px -15px oklch(0 0 0 / 35%);
   --shadow-popover: 0 4px 20px -4px var(--shadow-color);
-  --shadow-brand:   0 0 0 3px var(--brand-glow);
-  --shadow-error:   0 0 0 3px oklch(0.577 0.245 27 / 35%);
+  --shadow-brand: 0 0 0 3px var(--brand-glow);
+  --shadow-error: 0 0 0 3px oklch(0.577 0.245 27 / 35%);
 
   /* --- Gradients (named background-image tokens) --- */
-  --background-image-brand:      var(--gradient-brand);
+  --background-image-brand: var(--gradient-brand);
   --background-image-brand-soft: var(--gradient-brand-soft);
-  --background-image-hero:       var(--gradient-hero);
-  --background-image-glow:       var(--gradient-glow);
-  --background-image-shimmer:    var(--gradient-shimmer);
+  --background-image-hero: var(--gradient-hero);
+  --background-image-glow: var(--gradient-glow);
+  --background-image-shimmer: var(--gradient-shimmer);
 
   /* --- Textures / Patterns --- */
   --background-image-noise: var(--noise-url);
-  --background-image-dots:  var(--dots-url);
-  --background-image-grid:  var(--grid-url);
+  --background-image-dots: var(--dots-url);
+  --background-image-grid: var(--grid-url);
 }
 
 /* ─── Light Mode Values ─────────────────────────────────────────────────── */
@@ -153,38 +145,38 @@ To add brand colors or custom spacing, extend `@theme`:
   --radius: 0.625rem;
 
   /* --- Shadcn semantic colors (OKLCH) --- */
-  --background:              oklch(1 0 0);
-  --foreground:              oklch(0.145 0 0);
-  --card:                    oklch(1 0 0);
-  --card-foreground:         oklch(0.145 0 0);
-  --popover:                 oklch(1 0 0);
-  --popover-foreground:      oklch(0.145 0 0);
-  --primary:                 oklch(0.205 0 0);
-  --primary-foreground:      oklch(0.985 0 0);
-  --secondary:               oklch(0.97 0 0);
-  --secondary-foreground:    oklch(0.205 0 0);
-  --muted:                   oklch(0.97 0 0);
-  --muted-foreground:        oklch(0.556 0 0);
-  --accent:                  oklch(0.97 0 0);
-  --accent-foreground:       oklch(0.205 0 0);
-  --destructive:             oklch(0.577 0.245 27.325);
-  --destructive-foreground:  oklch(0.985 0 0);
-  --border:                  oklch(0.922 0 0);
-  --input:                   oklch(0.922 0 0);
-  --ring:                    oklch(0.708 0 0);
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar:                    oklch(0.985 0 0);
-  --sidebar-foreground:         oklch(0.145 0 0);
-  --sidebar-primary:            oklch(0.205 0 0);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
   --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent:             oklch(0.97 0 0);
-  --sidebar-accent-foreground:  oklch(0.205 0 0);
-  --sidebar-border:             oklch(0.922 0 0);
-  --sidebar-ring:               oklch(0.708 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
 
   /* --- Shadow tint (light mode: subtle, cool) --- */
   --shadow-color: oklch(0.2 0.02 260 / 10%);
@@ -193,11 +185,28 @@ To add brand colors or custom spacing, extend `@theme`:
   --brand-glow: oklch(0.55 0.22 260 / 35%);
 
   /* --- Gradients --- */
-  --gradient-brand:      linear-gradient(135deg, oklch(0.55 0.22 260), oklch(0.45 0.25 300));
-  --gradient-brand-soft: linear-gradient(135deg, oklch(0.55 0.22 260 / 10%), oklch(0.45 0.25 300 / 10%));
-  --gradient-hero:       radial-gradient(ellipse 80% 60% at 50% -10%, oklch(0.55 0.22 260 / 15%), transparent);
-  --gradient-glow:       radial-gradient(circle at center, oklch(0.55 0.22 260 / 25%) 0%, transparent 70%);
-  --gradient-shimmer:    linear-gradient(90deg, transparent 0%, oklch(1 0 0 / 60%) 50%, transparent 100%);
+  --gradient-brand: linear-gradient(135deg, oklch(0.55 0.22 260), oklch(0.45 0.25 300));
+  --gradient-brand-soft: linear-gradient(
+    135deg,
+    oklch(0.55 0.22 260 / 10%),
+    oklch(0.45 0.25 300 / 10%)
+  );
+  --gradient-hero: radial-gradient(
+    ellipse 80% 60% at 50% -10%,
+    oklch(0.55 0.22 260 / 15%),
+    transparent
+  );
+  --gradient-glow: radial-gradient(
+    circle at center,
+    oklch(0.55 0.22 260 / 25%) 0%,
+    transparent 70%
+  );
+  --gradient-shimmer: linear-gradient(
+    90deg,
+    transparent 0%,
+    oklch(1 0 0 / 60%) 50%,
+    transparent 100%
+  );
 
   /* --- Textures (light: dark dots/lines on white) --- */
   --noise-url: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
@@ -207,52 +216,63 @@ To add brand colors or custom spacing, extend `@theme`:
 
 /* ─── Dark Mode Values ──────────────────────────────────────────────────── */
 .dark {
-  --background:              oklch(0.145 0 0);
-  --foreground:              oklch(0.985 0 0);
-  --card:                    oklch(0.205 0 0);
-  --card-foreground:         oklch(0.985 0 0);
-  --popover:                 oklch(0.205 0 0);
-  --popover-foreground:      oklch(0.985 0 0);
-  --primary:                 oklch(0.922 0 0);
-  --primary-foreground:      oklch(0.205 0 0);
-  --secondary:               oklch(0.269 0 0);
-  --secondary-foreground:    oklch(0.985 0 0);
-  --muted:                   oklch(0.269 0 0);
-  --muted-foreground:        oklch(0.708 0 0);
-  --accent:                  oklch(0.269 0 0);
-  --accent-foreground:       oklch(0.985 0 0);
-  --destructive:             oklch(0.704 0.191 22.216);
-  --destructive-foreground:  oklch(0.985 0 0);
-  --border:                  oklch(1 0 0 / 10%);
-  --input:                   oklch(1 0 0 / 15%);
-  --ring:                    oklch(0.556 0 0);
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar:                    oklch(0.205 0 0);
-  --sidebar-foreground:         oklch(0.985 0 0);
-  --sidebar-primary:            oklch(0.488 0.243 264.376);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
   --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent:             oklch(0.269 0 0);
-  --sidebar-accent-foreground:  oklch(0.985 0 0);
-  --sidebar-border:             oklch(1 0 0 / 10%);
-  --sidebar-ring:               oklch(0.556 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
 
   /* --- Shadow tint (dark mode: heavier, cooler) --- */
   --shadow-color: oklch(0 0 0 / 40%);
 
   /* --- Gradients (darker soft tones for dark mode) --- */
-  --gradient-brand-soft: linear-gradient(135deg, oklch(0.55 0.22 260 / 25%), oklch(0.45 0.25 300 / 25%));
-  --gradient-hero:       radial-gradient(ellipse 80% 60% at 50% -10%, oklch(0.55 0.22 260 / 20%), transparent);
-  --gradient-glow:       radial-gradient(circle at center, oklch(0.55 0.22 260 / 35%) 0%, transparent 70%);
+  --gradient-brand-soft: linear-gradient(
+    135deg,
+    oklch(0.55 0.22 260 / 25%),
+    oklch(0.45 0.25 300 / 25%)
+  );
+  --gradient-hero: radial-gradient(
+    ellipse 80% 60% at 50% -10%,
+    oklch(0.55 0.22 260 / 20%),
+    transparent
+  );
+  --gradient-glow: radial-gradient(
+    circle at center,
+    oklch(0.55 0.22 260 / 35%) 0%,
+    transparent 70%
+  );
 
   /* --- Textures (dark: light dots/lines on dark) --- */
   --dots-url: url("data:image/svg+xml,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='2' cy='2' r='1' fill='%23fff' fill-opacity='0.06'/%3E%3C/svg%3E");
   --grid-url: url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 40 0 L 0 0 0 40' fill='none' stroke='%23fff' stroke-width='0.5' stroke-opacity='0.05'/%3E%3C/svg%3E");
 }
-
 
 /* ─── Base Styles ───────────────────────────────────────────────────────── */
 @layer base {
@@ -300,4 +320,3 @@ To add brand colors or custom spacing, extend `@theme`:
 /* Inline gradient one-off (no @theme needed) */
 <div className="bg-linear-to-br from-primary/20 to-accent/10 rounded-2xl" />
 ```
-

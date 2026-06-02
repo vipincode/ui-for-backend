@@ -1,6 +1,7 @@
 ## 3. Fonts — Google Fonts & Custom Fonts
 
 The `next/font` module is the **only correct approach**. It:
+
 - Self-hosts fonts at build time (no external requests to Google at runtime).
 - Eliminates layout shift (CLS) via automatic `size-adjust` fallback.
 - Preloads fonts on the routes where they are used.
@@ -11,8 +12,8 @@ Define all fonts in a **single file** and import from there. If you call the sam
 
 ```ts
 // src/lib/fonts.ts
-import { Inter, Fira_Code } from "next/font/google";
-import localFont from "next/font/local";
+import { Inter, Fira_Code } from "next/font/google"
+import localFont from "next/font/local"
 
 /*
   Always use variable fonts when available — a single file covers all weights
@@ -23,14 +24,14 @@ import localFont from "next/font/local";
 export const fontSans = Inter({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-sans",        // Matches --font-sans in @theme
-});
+  variable: "--font-sans", // Matches --font-sans in @theme
+})
 
 export const fontMono = Fira_Code({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-mono",
-});
+})
 
 /*
   Local / custom font (e.g. a brand font not on Google Fonts).
@@ -52,16 +53,16 @@ export const fontBrand = localFont({
   ],
   variable: "--font-brand",
   display: "swap",
-});
+})
 ```
 
 ### Apply fonts in the root layout
 
 ```tsx
 // src/app/layout.tsx
-import { fontSans, fontMono, fontBrand } from "@/lib/fonts";
-import { ThemeProvider } from "@/components/providers/theme-provider";
-import "./globals.css";
+import { fontSans, fontMono, fontBrand } from "@/lib/fonts"
+import { ThemeProvider } from "@/components/providers/theme-provider"
+import "./globals.css"
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -80,7 +81,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </ThemeProvider>
       </body>
     </html>
-  );
+  )
 }
 ```
 
@@ -89,8 +90,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 ```css
 /* In globals.css @theme inline block */
 @theme inline {
-  --font-sans:  var(--font-sans);   /* maps to next/font CSS var */
-  --font-mono:  var(--font-mono);
+  --font-sans: var(--font-sans); /* maps to next/font CSS var */
+  --font-mono: var(--font-mono);
   --font-brand: var(--font-brand);
 }
 ```

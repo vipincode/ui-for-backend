@@ -10,6 +10,7 @@ npx shadcn@latest add form input label button
 ### Architecture
 
 The recommended pattern for Shadcn + React Hook Form in v4 uses:
+
 - `useForm` for form state.
 - `Controller` for every field (works with controlled Shadcn components).
 - `<Field>` / `<FieldLabel>` / `<FieldError>` for accessible markup.
@@ -21,44 +22,26 @@ This wrapper eliminates the repetitive `Controller` + `Field` + `FieldError` boi
 
 ```tsx
 // src/components/form/form-field.tsx
-"use client";
+"use client"
 
-import {
-  Controller,
-  type Control,
-  type FieldPath,
-  type FieldValues,
-} from "react-hook-form";
-import {
-  Field,
-  FieldLabel,
-  FieldDescription,
-  FieldError,
-} from "@/components/ui/field";
+import { Controller, type Control, type FieldPath, type FieldValues } from "react-hook-form"
+import { Field, FieldLabel, FieldDescription, FieldError } from "@/components/ui/field"
 
-interface FormFieldProps<
-  TFieldValues extends FieldValues,
-  TName extends FieldPath<TFieldValues>,
-> {
-  control: Control<TFieldValues>;
-  name: TName;
-  label?: string;
-  description?: string;
-  required?: boolean;
+interface FormFieldProps<TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues>> {
+  control: Control<TFieldValues>
+  name: TName
+  label?: string
+  description?: string
+  required?: boolean
   render: (props: {
-    field: Parameters<
-      Parameters<typeof Controller<TFieldValues, TName>>[0]["render"]
-    >[0]["field"];
+    field: Parameters<Parameters<typeof Controller<TFieldValues, TName>>[0]["render"]>[0]["field"]
     fieldState: Parameters<
       Parameters<typeof Controller<TFieldValues, TName>>[0]["render"]
-    >[0]["fieldState"];
-  }) => React.ReactNode;
+    >[0]["fieldState"]
+  }) => React.ReactNode
 }
 
-export function FormField<
-  TFieldValues extends FieldValues,
-  TName extends FieldPath<TFieldValues>,
->({
+export function FormField<TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues>>({
   control,
   name,
   label,
@@ -75,20 +58,16 @@ export function FormField<
           {label && (
             <FieldLabel htmlFor={field.name}>
               {label}
-              {required && <span className="text-destructive ml-1">*</span>}
+              {required && <span className="ml-1 text-destructive">*</span>}
             </FieldLabel>
           )}
           {render({ field, fieldState })}
-          {description && !fieldState.invalid && (
-            <FieldDescription>{description}</FieldDescription>
-          )}
-          {fieldState.invalid && (
-            <FieldError errors={[fieldState.error]} />
-          )}
+          {description && !fieldState.invalid && <FieldDescription>{description}</FieldDescription>}
+          {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
         </Field>
       )}
     />
-  );
+  )
 }
 ```
 
@@ -96,23 +75,23 @@ export function FormField<
 
 ```tsx
 // src/components/forms/profile-form.tsx
-"use client";
+"use client"
 
-import * as z from "zod";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { toast } from "sonner";
+import * as z from "zod"
+import { useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { toast } from "sonner"
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from "@/components/ui/select"
 import {
   Card,
   CardContent,
@@ -120,9 +99,9 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { FieldGroup } from "@/components/ui/field";
-import { FormField } from "@/components/form/form-field";
+} from "@/components/ui/card"
+import { FieldGroup } from "@/components/ui/field"
+import { FormField } from "@/components/form/form-field"
 
 /* ─── 1. Schema — colocated with the form ─────────────────────────────────── */
 const profileSchema = z.object({
@@ -131,21 +110,18 @@ const profileSchema = z.object({
     .min(3, "Username must be at least 3 characters.")
     .max(20, "Username must be at most 20 characters.")
     .regex(/^[a-z0-9_]+$/, "Only lowercase letters, numbers, and underscores."),
-  bio: z
-    .string()
-    .max(160, "Bio must be at most 160 characters.")
-    .optional(),
+  bio: z.string().max(160, "Bio must be at most 160 characters.").optional(),
   role: z.enum(["developer", "designer", "manager"], {
     required_error: "Please select a role.",
   }),
-});
+})
 
-type ProfileFormValues = z.infer<typeof profileSchema>;
+type ProfileFormValues = z.infer<typeof profileSchema>
 
 /* ─── 2. Props ────────────────────────────────────────────────────────────── */
 interface ProfileFormProps {
-  defaultValues?: Partial<ProfileFormValues>;
-  onSuccess?: (data: ProfileFormValues) => void;
+  defaultValues?: Partial<ProfileFormValues>
+  onSuccess?: (data: ProfileFormValues) => void
 }
 
 /* ─── 3. Component ────────────────────────────────────────────────────────── */
@@ -164,18 +140,20 @@ export function ProfileForm({ defaultValues, onSuccess }: ProfileFormProps) {
     */
     mode: "onBlur",
     reValidateMode: "onChange",
-  });
+  })
 
-  const { formState: { isSubmitting } } = form;
+  const {
+    formState: { isSubmitting },
+  } = form
 
   async function onSubmit(data: ProfileFormValues) {
     try {
       // Replace with your API call
-      await new Promise((r) => setTimeout(r, 1000));
-      toast.success("Profile updated successfully.");
-      onSuccess?.(data);
+      await new Promise((r) => setTimeout(r, 1000))
+      toast.success("Profile updated successfully.")
+      onSuccess?.(data)
     } catch {
-      toast.error("Something went wrong. Please try again.");
+      toast.error("Something went wrong. Please try again.")
     }
   }
 
@@ -218,7 +196,7 @@ export function ProfileForm({ defaultValues, onSuccess }: ProfileFormProps) {
                   {...field}
                   id={field.name}
                   placeholder="I'm a software engineer..."
-                  className="resize-none min-h-[100px]"
+                  className="min-h-[100px] resize-none"
                   aria-invalid={fieldState.invalid}
                 />
               )}
@@ -231,15 +209,8 @@ export function ProfileForm({ defaultValues, onSuccess }: ProfileFormProps) {
               label="Role"
               required
               render={({ field, fieldState }) => (
-                <Select
-                  name={field.name}
-                  value={field.value}
-                  onValueChange={field.onChange}
-                >
-                  <SelectTrigger
-                    id={field.name}
-                    aria-invalid={fieldState.invalid}
-                  >
+                <Select name={field.name} value={field.value} onValueChange={field.onChange}>
+                  <SelectTrigger id={field.name} aria-invalid={fieldState.invalid}>
                     <SelectValue placeholder="Select your role" />
                   </SelectTrigger>
                   <SelectContent>
@@ -268,7 +239,7 @@ export function ProfileForm({ defaultValues, onSuccess }: ProfileFormProps) {
         </CardFooter>
       </form>
     </Card>
-  );
+  )
 }
 ```
 
@@ -277,7 +248,7 @@ export function ProfileForm({ defaultValues, onSuccess }: ProfileFormProps) {
 | Mode        | When it validates                | Best for                          |
 | ----------- | -------------------------------- | --------------------------------- |
 | `onSubmit`  | On submit only (default)         | Short / simple forms              |
-| `onBlur`    | When user leaves a field         | Most production forms ✅           |
+| `onBlur`    | When user leaves a field         | Most production forms ✅          |
 | `onChange`  | On every keystroke               | Password strength meters          |
 | `onTouched` | First blur, then on every change | Long multi-step forms             |
 | `all`       | Both blur and change             | High-stakes forms (payment, auth) |
@@ -288,35 +259,35 @@ If submitting to a Next.js Server Action, add `action` alongside `onSubmit`:
 
 ```tsx
 // src/app/actions/profile.ts
-"use server";
-import { profileSchema } from "@/lib/schemas/profile";
+"use server"
+import { profileSchema } from "@/lib/schemas/profile"
 
 export async function updateProfile(formData: FormData) {
-  const raw = Object.fromEntries(formData);
-  const parsed = profileSchema.safeParse(raw);
+  const raw = Object.fromEntries(formData)
+  const parsed = profileSchema.safeParse(raw)
   if (!parsed.success) {
-    return { error: parsed.error.flatten().fieldErrors };
+    return { error: parsed.error.flatten().fieldErrors }
   }
   // ... database update
-  return { success: true };
+  return { success: true }
 }
 ```
 
 ```tsx
 // In the form component
-import { updateProfile } from "@/app/actions/profile";
+import { updateProfile } from "@/app/actions/profile"
 
 async function onSubmit(data: ProfileFormValues) {
-  const formData = new FormData();
-  Object.entries(data).forEach(([k, v]) => formData.append(k, v ?? ""));
-  const result = await updateProfile(formData);
+  const formData = new FormData()
+  Object.entries(data).forEach(([k, v]) => formData.append(k, v ?? ""))
+  const result = await updateProfile(formData)
   if (result.error) {
     // Set server errors back into RHF
     Object.entries(result.error).forEach(([field, messages]) => {
       form.setError(field as keyof ProfileFormValues, {
         message: messages?.[0],
-      });
-    });
+      })
+    })
   }
 }
 ```

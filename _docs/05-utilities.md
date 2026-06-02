@@ -34,14 +34,14 @@ Shadcn already uses `--radius` as a single knob. The best production approach is
 /* @theme inline — expose the derived scale as Tailwind utilities */
 @theme inline {
   --radius-none: 0px;
-  --radius-xs:   calc(var(--radius) - 6px);  /* 4px  → rounded-xs  */
-  --radius-sm:   calc(var(--radius) - 4px);  /* 6px  → rounded-sm  */
-  --radius-md:   calc(var(--radius) - 2px);  /* 8px  → rounded-md  */
-  --radius-lg:   var(--radius);              /* 10px → rounded-lg  */
-  --radius-xl:   calc(var(--radius) + 4px);  /* 14px → rounded-xl  */
-  --radius-2xl:  calc(var(--radius) + 8px);  /* 18px → rounded-2xl */
-  --radius-3xl:  calc(var(--radius) + 16px); /* 26px → rounded-3xl */
-  --radius-full: 9999px;                     /* pill → rounded-full */
+  --radius-xs: calc(var(--radius) - 6px); /* 4px  → rounded-xs  */
+  --radius-sm: calc(var(--radius) - 4px); /* 6px  → rounded-sm  */
+  --radius-md: calc(var(--radius) - 2px); /* 8px  → rounded-md  */
+  --radius-lg: var(--radius); /* 10px → rounded-lg  */
+  --radius-xl: calc(var(--radius) + 4px); /* 14px → rounded-xl  */
+  --radius-2xl: calc(var(--radius) + 8px); /* 18px → rounded-2xl */
+  --radius-3xl: calc(var(--radius) + 16px); /* 26px → rounded-3xl */
+  --radius-full: 9999px; /* pill → rounded-full */
 }
 ```
 
@@ -60,7 +60,6 @@ Usage in components:
 
 ---
 
-
 ### Box Shadow
 
 In Tailwind v4, `--shadow-*` tokens map to the `shadow-*` utilities. Define them as plain CSS shadow values — no JavaScript object syntax needed.
@@ -69,8 +68,8 @@ In Tailwind v4, `--shadow-*` tokens map to the `shadow-*` utilities. Define them
 /* globals.css — :root */
 :root {
   /* Semantic shadow tokens. Values here can also be swapped per theme. */
-  --shadow-color: oklch(0 0 0 / 8%);        /* default shadow tint */
-  --shadow-color-dark: oklch(0 0 0 / 30%);  /* stronger in dark mode */
+  --shadow-color: oklch(0 0 0 / 8%); /* default shadow tint */
+  --shadow-color-dark: oklch(0 0 0 / 30%); /* stronger in dark mode */
 }
 
 /* .dark swaps the shadow tint so shadows feel natural in dark UIs */
@@ -81,17 +80,17 @@ In Tailwind v4, `--shadow-*` tokens map to the `shadow-*` utilities. Define them
 /* @theme inline — expose named shadow utilities */
 @theme inline {
   /* Elevation scale */
-  --shadow-xs:  0 1px 2px 0 var(--shadow-color);
-  --shadow-sm:  0 1px 3px 0 var(--shadow-color), 0 1px 2px -1px var(--shadow-color);
-  --shadow-md:  0 4px 6px -1px var(--shadow-color), 0 2px 4px -2px var(--shadow-color);
-  --shadow-lg:  0 10px 15px -3px var(--shadow-color), 0 4px 6px -4px var(--shadow-color);
-  --shadow-xl:  0 20px 25px -5px var(--shadow-color), 0 8px 10px -6px var(--shadow-color);
+  --shadow-xs: 0 1px 2px 0 var(--shadow-color);
+  --shadow-sm: 0 1px 3px 0 var(--shadow-color), 0 1px 2px -1px var(--shadow-color);
+  --shadow-md: 0 4px 6px -1px var(--shadow-color), 0 2px 4px -2px var(--shadow-color);
+  --shadow-lg: 0 10px 15px -3px var(--shadow-color), 0 4px 6px -4px var(--shadow-color);
+  --shadow-xl: 0 20px 25px -5px var(--shadow-color), 0 8px 10px -6px var(--shadow-color);
   --shadow-2xl: 0 25px 50px -12px var(--shadow-color);
 
   /* Semantic / component-level tokens */
-  --shadow-card:   0 2px 8px -2px var(--shadow-color), 0 1px 3px -1px var(--shadow-color);
+  --shadow-card: 0 2px 8px -2px var(--shadow-color), 0 1px 3px -1px var(--shadow-color);
   --shadow-dialog: 0 20px 60px -15px oklch(0 0 0 / 35%);
-  --shadow-popover:0 4px 20px -4px var(--shadow-color);
+  --shadow-popover: 0 4px 20px -4px var(--shadow-color);
 
   /* Colored glow shadows (brand accents, focus rings) */
   --shadow-brand: 0 0 0 3px oklch(0.55 0.22 260 / 35%);
@@ -114,7 +113,6 @@ Usage:
 
 ---
 
-
 ### Gradients
 
 Tailwind v4 ships a powerful gradient API. There are two ways to use gradients in the theme:
@@ -125,26 +123,47 @@ Tailwind v4 ships a powerful gradient API. There are two ways to use gradients i
 /* globals.css */
 :root {
   /* Named gradient tokens — accessible via CSS var() outside Tailwind too */
-  --gradient-brand:      linear-gradient(135deg, oklch(0.55 0.22 260), oklch(0.45 0.25 300));
-  --gradient-brand-soft: linear-gradient(135deg, oklch(0.55 0.22 260 / 15%), oklch(0.45 0.25 300 / 15%));
-  --gradient-hero:       radial-gradient(ellipse 80% 60% at 50% -10%, oklch(0.55 0.22 260 / 20%), transparent);
-  --gradient-glow:       radial-gradient(circle at center, oklch(0.55 0.22 260 / 30%) 0%, transparent 70%);
-  --gradient-card-dark:  linear-gradient(145deg, oklch(0.2 0.02 260), oklch(0.15 0 0));
-  --gradient-shimmer:    linear-gradient(90deg, transparent 0%, oklch(1 0 0 / 8%) 50%, transparent 100%);
+  --gradient-brand: linear-gradient(135deg, oklch(0.55 0.22 260), oklch(0.45 0.25 300));
+  --gradient-brand-soft: linear-gradient(
+    135deg,
+    oklch(0.55 0.22 260 / 15%),
+    oklch(0.45 0.25 300 / 15%)
+  );
+  --gradient-hero: radial-gradient(
+    ellipse 80% 60% at 50% -10%,
+    oklch(0.55 0.22 260 / 20%),
+    transparent
+  );
+  --gradient-glow: radial-gradient(
+    circle at center,
+    oklch(0.55 0.22 260 / 30%) 0%,
+    transparent 70%
+  );
+  --gradient-card-dark: linear-gradient(145deg, oklch(0.2 0.02 260), oklch(0.15 0 0));
+  --gradient-shimmer: linear-gradient(
+    90deg,
+    transparent 0%,
+    oklch(1 0 0 / 8%) 50%,
+    transparent 100%
+  );
 }
 
 .dark {
-  --gradient-brand-soft: linear-gradient(135deg, oklch(0.55 0.22 260 / 25%), oklch(0.45 0.25 300 / 25%));
+  --gradient-brand-soft: linear-gradient(
+    135deg,
+    oklch(0.55 0.22 260 / 25%),
+    oklch(0.45 0.25 300 / 25%)
+  );
 }
 
 /* @theme inline — map to bg-* utilities */
 @theme inline {
-  --background-image-brand:      var(--gradient-brand);
+  --background-image-brand: var(--gradient-brand);
   --background-image-brand-soft: var(--gradient-brand-soft);
-  --background-image-hero:       var(--gradient-hero);
-  --background-image-glow:       var(--gradient-glow);
-  --background-image-card-dark:  var(--gradient-card-dark);
-  --background-image-shimmer:    var(--gradient-shimmer);
+  --background-image-hero: var(--gradient-hero);
+  --background-image-glow: var(--gradient-glow);
+  --background-image-card-dark: var(--gradient-card-dark);
+  --background-image-shimmer: var(--gradient-shimmer);
 }
 ```
 
@@ -163,27 +182,38 @@ Usage:
 **Option B — Inline Tailwind v4 gradient utilities** (for one-off gradients):
 
 ```tsx
-{/* Linear gradient — direction, stops */}
-<div className="bg-linear-to-r from-blue-500 to-purple-600">…</div>
+{
+  /* Linear gradient — direction, stops */
+}
+;<div className="bg-linear-to-r from-blue-500 to-purple-600">…</div>
 
-{/* Explicit angle */}
-<div className="bg-linear-[135deg] from-pink-500 via-rose-400 to-orange-300">…</div>
+{
+  /* Explicit angle */
+}
+;<div className="bg-linear-[135deg] from-pink-500 via-rose-400 to-orange-300">…</div>
 
-{/* Radial gradient */}
-<div className="bg-radial-[ellipse_at_top] from-sky-400 to-transparent">…</div>
+{
+  /* Radial gradient */
+}
+;<div className="bg-radial-[ellipse_at_top] from-sky-400 to-transparent">…</div>
 
-{/* Conic gradient */}
-<div className="bg-conic from-violet-500 to-cyan-500">…</div>
+{
+  /* Conic gradient */
+}
+;<div className="bg-conic from-violet-500 to-cyan-500">…</div>
 
-{/* Gradient interpolation in OKLCH (v4 default) */}
-<div className="bg-linear-to-r from-red-500 to-blue-500 in-oklch">…</div>
+{
+  /* Gradient interpolation in OKLCH (v4 default) */
+}
+;<div className="in-oklch bg-linear-to-r from-red-500 to-blue-500">…</div>
 
-{/* Reference a named CSS variable gradient */}
-<div className="bg-linear-(--gradient-brand)">…</div>
+{
+  /* Reference a named CSS variable gradient */
+}
+;<div className="bg-linear-(--gradient-brand)">…</div>
 ```
 
 ---
-
 
 ### Background Images (textures, patterns, SVG data URIs)
 
@@ -209,35 +239,80 @@ For non-gradient background images — SVG patterns, noise textures, external im
 
 @theme inline {
   --background-image-noise: var(--noise-url);
-  --background-image-dots:  var(--dots-url);
-  --background-image-grid:  var(--grid-url);
+  --background-image-dots: var(--dots-url);
+  --background-image-grid: var(--grid-url);
 }
 ```
 
 Usage — stacking multiple backgrounds (CSS allows it):
 
 ```tsx
-{/* Dot grid + brand gradient layered */}
-<section
-  className="bg-dots bg-background"
-  style={{ backgroundBlendMode: "multiply" }}
->…</section>
+{
+  /* Dot grid + brand gradient layered */
+}
+;<section className="bg-background bg-dots" style={{ backgroundBlendMode: "multiply" }}>
+  …
+</section>
 
-{/* Noise texture on top of a solid card */}
-<div className="relative overflow-hidden rounded-xl bg-card">
-  <div className="absolute inset-0 bg-noise opacity-50 pointer-events-none" />
+{
+  /* Noise texture on top of a solid card */
+}
+;<div className="relative overflow-hidden rounded-xl bg-card">
+  <div className="pointer-events-none absolute inset-0 bg-noise opacity-50" />
   {children}
 </div>
 
-{/* Hero section: radial glow + subtle grid */}
-<section
+{
+  /* Hero section: radial glow + subtle grid */
+}
+;<section
   style={{
     backgroundImage: "var(--gradient-hero), var(--grid-url)",
   }}
->…</section>
+>
+  …
+</section>
 ```
 
 ---
 
+## Image Position:
 
+``jsx
 
+<div className="bg-center" />
+<div className="bg-top" />
+<div className="bg-bottom" />
+<div className="bg-left" />
+<div className="bg-right" />
+
+<div className="bg-left-top" />
+<div className="bg-right-top" />
+<div className="bg-left-bottom" />
+<div className="bg-right-bottom" />
+
+<div className="bg-[position:50%_20%]">
+
+bg-[position:center_top]
+bg-[position:right_100px_bottom_50px]
+bg-[position:20%_80%]
+
+```
+
+## Format Tailwind ClassName
+
+```prettier.config.ts
+/** @type {import('prettier').Config & import('prettier-plugin-tailwindcss').PluginOptions} */
+const config = {
+  semi: false,
+  singleQuote: false,
+  tabWidth: 2,
+  trailingComma: "all",
+  printWidth: 120,
+  plugins: ["prettier-plugin-tailwindcss"],
+  tailwindStylesheet: "./app/globals.css",
+  tailwindFunctions: ["cn", "clsx", "cva", "cx", "twMerge"],
+}
+
+export default config
+```
