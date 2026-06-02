@@ -10,7 +10,7 @@ const Header = () => {
   return (
     <header className="bg- flex h-(--header-height) items-center justify-between border-b bg-glow p-4">
       <Link href={"/"}>
-        <div className="px-4 py-3 text-lg font-bold">Logo</div>
+        <div className="px-4 py-3 text-lg font-bold text-hm-red">Logo</div>
       </Link>
       <div className="flex items-center gap-4">
         <Avatar>
