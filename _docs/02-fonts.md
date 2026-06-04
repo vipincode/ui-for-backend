@@ -1,6 +1,7 @@
 ## 3. Fonts — Google Fonts & Custom Fonts
 
 The `next/font` module is the **only correct approach**. It:
+
 - Self-hosts fonts at build time (no external requests to Google at runtime).
 - Eliminates layout shift (CLS) via automatic `size-adjust` fallback.
 - Preloads fonts on the routes where they are used.
@@ -23,7 +24,7 @@ import localFont from "next/font/local";
 export const fontSans = Inter({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-sans",        // Matches --font-sans in @theme
+  variable: "--font-sans", // Matches --font-sans in @theme
 });
 
 export const fontMono = Fira_Code({
@@ -63,7 +64,11 @@ import { fontSans, fontMono, fontBrand } from "@/lib/fonts";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import "./globals.css";
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html
       lang="en"
@@ -89,8 +94,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 ```css
 /* In globals.css @theme inline block */
 @theme inline {
-  --font-sans:  var(--font-sans);   /* maps to next/font CSS var */
-  --font-mono:  var(--font-mono);
+  --font-inter: var(--font-inter); /* maps to next/font CSS var */
+  --font-mono: var(--font-mono);
   --font-brand: var(--font-brand);
 }
 ```
