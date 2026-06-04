@@ -1,0 +1,9 @@
+https://github.com/vipincode/ui-for-backend
+
+npx shadcn@latest add --all
+
+https://ui.shadcn.com/create
+
+https://oklch.com/#0.7,0.1,95,100
+
+https://coolors.co/
